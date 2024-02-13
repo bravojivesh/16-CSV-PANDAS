@@ -6,18 +6,26 @@ data=pandas.read_csv("50_states.csv")
 class Score(tu.Turtle):
     def __init__(self):
         super().__init__()
+        self.penup()
+        self.hideturtle()
+        self.list=[]
+
     def check_ans(self,answer):
-        states= data["state"]
-        for x in states:
-            if answer== x:
-                p=data[data.state==x]
-                px=p.x
-                print (px)
+        states= data["state"].tolist()
+        print(states)
+        if answer.lower() in states:
+                get_row=data[data.state==x] #gets the entire row with index and data type info
+                x_cor=int(get_row.x.item())
+                y_cor=int(get_row.y.item())
+                self.goto(x_cor,y_cor)
+                self.write(answer.title())
 
 
 
 
 
 s=Score()
-s.check_ans("Texas")
+s.check_ans("North Carolina")
+
+
 

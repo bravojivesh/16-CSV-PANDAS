@@ -31,9 +31,14 @@ class Score(tu.Turtle):
                 # print(self.correct_guess_list) #debuggin only:
 
     def missed_list_f(self): #made a mistake of using the same name for function and attribute
-        for x in states:
-            if x not in self.correct_guess_list:
-                self.missed_list.append(x)
+        # for x in states:
+        #     if x not in self.correct_guess_list:
+        #         self.missed_list.append(x)
+
+        #Either the above Or below. The one below is with list comprehension.
+
+        self.missed_list= [x for x in states if x not in self.correct_guess_list]
+
         df=pandas.DataFrame(self.missed_list)
         df.to_csv("Missed_state.csv")
 
